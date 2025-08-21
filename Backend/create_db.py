@@ -13,7 +13,7 @@ DB_PATH = 'aurora_app.db'
 import sqlite3
 import os
 
-# Define path
+# Defines the path to the database and recordings directory
 DB_PATH = "db/aurora_app.db"
 RECORDINGS_DIR = "Audio"
 
