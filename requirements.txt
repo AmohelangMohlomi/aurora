@@ -1,3 +1,4 @@
 flask
 pyaudio
-speech_recognition
+SpeechRecognition
+
