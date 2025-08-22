@@ -16,7 +16,7 @@ And **Aurora listens**.
 
 ---
 
-## 🌟 What Is Aurora?
+##  What Is Aurora?
 
 A **voice-activated safety system** that turns a single word into a lifeline.
 
@@ -31,7 +31,7 @@ Just **your voice**, when you need it most.
 
 ---
 
-## 💡 Why We Built This
+##  Why We Built This
 
 We were inspired by real stories:
 - A student walking home alone at night
@@ -90,7 +90,7 @@ pip install -r requirements.txt
 python app.py
 ```
 
-👉 Open [http://localhost:5000](http://localhost:5000)  
+Open [http://localhost:5000](http://localhost:5000)  
 Say: **"help me"**  or any other keyword you choose for yourself
 Watch as Aurora responds — silently, swiftly, securely.
 
