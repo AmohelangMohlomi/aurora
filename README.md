@@ -21,7 +21,7 @@ And **Aurora listens**.
 A **voice-activated safety system** that turns a single word into a lifeline.
 
 Say *"help"* — and Aurora:
-1. 🔴 Starts recording your surroundings
+1.  Starts recording your surroundings
 2.  Logs the event with timestamp and location
 3.  Saves it securely — offline, private, forever
 4.  (Coming soon) Alerts your trusted contacts
@@ -60,7 +60,7 @@ All yours.
 
 ---
 
-## 🛠️ Tech Behind the Magic
+##  Tech Behind the Magic
 
 -  **Python + Flask** – Lightweight, powerful, and fast
 -  **SpeechRecognition + PyAudio** – Always listening, zero latency
@@ -96,13 +96,13 @@ Watch as Aurora responds — silently, swiftly, securely.
 
 ---
 
-## 🧑‍🤝‍🧑 Who Is This For?
+##  Who Is This For?
 
-- 🧒 A parent who wants to protect their child
-- 👵 A caregiver monitoring an elderly loved one
-- 🚓 A student walking home late at night
-- 🛡️ A survivor reclaiming their sense of safety
-- 💙 Anyone who believes: **help should be easy**
+-  A parent who wants to protect their child
+-  A caregiver monitoring an elderly loved one
+-  A student walking home late at night
+-  A survivor reclaiming their sense of safety
+-  Anyone who believes: **help should be easy**
 
 Aurora isn’t just for those in crisis.  
 It’s for everyone who’s ever felt unsafe — and didn’t know what to do.
@@ -115,7 +115,7 @@ We’re just getting started. Next:
 - 📞 Auto-alert your emergency contacts
 - 📍 Live location sharing
 - 🧠 AI to detect distress in your voice
-- 🎧 Wearable integration (spanic button)
+- 🎧 Wearable integration (panic button)
 - 🌐 Multilingual support
 
 Because safety shouldn’t depend on your phone, your network, or your courage.
@@ -128,7 +128,7 @@ They’re built **with** people, **for** people.
 
 ---
 
-## ❤️ A Note From the Team
+##  A Note From the Team
 
 > "We don’t know what kind of moment will bring someone to Aurora.  
 > But we know this:  
@@ -142,14 +142,14 @@ They’re built **with** people, **for** people.
 
 ---
 
-## 📄 License
+##  License
 
 MIT © 2025 Aurora Safety Project  
 Free for all. Built for good.
 
 ---
 
-> ✨ **Aurora**:  
+>  **Aurora**:  
 > Not just an app.  
 > A promise.  
 > *You are not alone.*
