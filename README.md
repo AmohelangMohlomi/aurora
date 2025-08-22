@@ -3,7 +3,7 @@
 
 # 🌌 Aurora: Safety That Listens
 
-> *"Help."*  
+> *"Computer."*  
 > That’s all you should have to say.
 
 We built **Aurora** because sometimes, pressing a button isn’t possible.  
@@ -20,7 +20,7 @@ And **Aurora listens**.
 
 A **voice-activated safety system** that turns a single word into a lifeline.
 
-Say *"help"* — and Aurora:
+Say *"Computer"* — and Aurora:
 1.  Starts recording your surroundings
 2.  Logs the event with timestamp and location
 3.  Saves it securely — offline, private, forever
@@ -91,7 +91,7 @@ python app.py
 ```
 
 Open [http://localhost:5000](http://localhost:5000)  
-Say: **"help me"**  or any other keyword you choose for yourself
+Say: **"Computer"**  or any other keyword you choose for yourself
 Watch as Aurora responds — silently, swiftly, securely.
 
 ---

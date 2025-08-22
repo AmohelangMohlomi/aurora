@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Aurora: Database & Backend Documentation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.7;
+      color: #333;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #fff;
+      color: #2c3e50;
+    }
+    h1, h2, h3, h4 {
+      color: #d32f2f;
+      border-bottom: 2px solid #f5f5f5;
+      padding-bottom: 8px;
+    }
+    h1 {
+      border-bottom: 3px solid #d32f2f;
+      padding-bottom: 10px;
+    }
+    code {
+      background: #f0f0f0;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9em;
+    }
+    pre {
+      background: #f5f5f5;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 0.95em;
+      line-height: 1.4;
+    }
+    .note {
+      background: #e3f2fd;
+      border-left: 4px solid #2196f3;
+      padding: 12px 16px;
+      margin: 20px 0;
+      font-style: italic;
+    }
+    .footer {
+      margin-top: 60px;
+      text-align: center;
+      font-size: 0.9em;
+      color: #7f8c8d;
+      border-top: 1px solid #eee;
+      padding-top: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    table, th, td {
+      border: 1px solid #ddd;
+    }
+    th, td {
+      padding: 12px;
+      text-align: left;
+    }
+    th {
+      background-color: #f8f9fa;
+    }
+  </style>
+</head>
+<body>
+
+<h1>📄 Aurora: Database & Backend Documentation</h1>
+<p><strong>Voice-Activated Safety System | Hackathon 2025</strong></p>
+
+<h2>1. Overview</h2>
+<p><strong>Aurora</strong> is a privacy-first, offline-capable safety app that activates when you say a keyword (e.g., "help"). It records your surroundings, logs the event, and keeps your data secure — all without internet or cloud storage.</p>
+
+<p>Built with:</p>
+<ul>
+  <li><strong>Flask + pyproject.toml</strong> – Modern Python backend</li>
+  <li><strong>SQLite</strong> – Local, secure database</li>
+  <li><strong>Voice Detection</strong> – Keyword-triggered recording</li>
+  <li><strong>Live Location Ready</strong> – For mobile companion apps</li>
+</ul>
+
+---
+
+<h2>2. Project Structure</h2>
+<pre>
+aurora/
+ ├── pyproject.toml            ← Modern Python config
+ ├── app.py                    ← Flask server + voice listener
+ ├── create_db.py              ← Creates SQLite DB
+ ├── database.py               ← DB connection helper
+ ├── requirements.txt          ← Dev dependencies
+ ├── audio/                    ← Saved recordings
+ ├── db/safety_app.db          ← Secure local database
+ └── templates/index.html      ← Web dashboard
+</pre>
+
+---
+
+<h2>3. <code>pyproject.toml</code> – Modern Python Packaging</h2>
+<p>Follows <strong>PEP 639</strong> for license and metadata.</p>
+
+<pre>
+[build-system]
+requires = ["setuptools >= 77.0.3", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aurora-safety"
+version = "1.0.0"
+description = "Voice-activated safety system for vulnerable users"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.8"
+keywords = ["safety", "voice", "privacy", "mental health"]
+authors = [{name = "Your Name", email = "you@example.com"}]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "Topic :: Security :: Safety",
+  "License :: OSI Approved :: MIT License"
+]
+dependencies = [
+  "Flask>=2.3.0",
+  "SpeechRecognition>=3.8.1",
+  "pyttsx3>=2.90",
+  "pyaudio>=0.2.11"
+]
+
+[project.urls]
+Homepage = "https://github.com/yourname/aurora"
+Repository = "https://github.com/yourname/aurora.git"
+Issues = "https://github.com/yourname/aurora/issues"
+</pre>
+
+---
+
+<h2>4. Database Schema (SQLite)</h2>
+
+<table>
+  <tr><th>Table</th><th>Columns</th><th>Description</th></tr>
+  <tr>
+    <td><code>alerts</code></td>
+    <td>
+      id, type, message,<br>
+      lat, lng, timestamp
+    </td>
+    <td>Logs voice alerts, panic events, location pings</td>
+  </tr>
+  <tr>
+    <td><code>recordings</code></td>
+    <td>
+      id, alert_id, file_path,<br>
+      duration_sec, created_at
+    </td>
+    <td>Stores metadata for audio files</td>
+  </tr>
+</table>
+
+<p>Schema created via <code>create_db.py</code>:</p>
+<pre>
+CREATE TABLE alerts (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    type TEXT NOT NULL,
+    message TEXT,
+    lat REAL,
+    lng REAL,
+    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE recordings (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    alert_id INTEGER,
+    file_path TEXT NOT NULL,
+    duration_sec INTEGER,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (alert_id) REFERENCES alerts(id)
+);
+</pre>
+
+---
+
+<h2>5. Backend API Endpoints</h2>
+<p>Flask routes for integration with mobile apps.</p>
+
+<table>
+  <tr><th>Endpoint</th><th>Method</th><th>Purpose</th></tr>
+  <tr><td><code>/</code></td><td>GET</td><td>Web dashboard</td></tr>
+  <tr><td><code>/status</code></td><td>GET</td><td>JSON of recent alerts</td></tr>
+  <tr><td><code>/start</code></td><td>GET</td><td>Manually trigger recording</td></tr>
+  <tr><td><code>/location/update</code></td><td>POST</td><td>Send GPS from mobile app</td></tr>
+  <tr><td><code>/location/current</code></td><td>GET</td><td>Get last known location</td></tr>
+</table>
+
+---
+
+<h2>6. Live Location Feature</h2>
+<p>Mobile app sends periodic location updates:</p>
+<pre>
+POST /location/update
+{
+  "lat": 37.7749,
+  "lng": -122.4194
+}
+</pre>
+<p>Stored in <code>alerts</code> table with timestamp.</p>
+
+<div class="note">
+  🔔 <strong>Pro Tip:</strong> Use <code>geolocator</code> in Flutter to send updates every 5–10 seconds during a safety event.
+</div>
+
+---
+
+<h2>7. Voice Activation Flow</h2>
+<pre>
+User says "help"
+        ↓
+Flask detects keyword
+        ↓
+Starts recording via microphone
+        ↓
+Stops after 3 sec silence
+        ↓
+Saves .wav to /audio
+        ↓
+Logs alert in SQLite
+        ↓
+Updates web dashboard
+</pre>
+
+<p>Handled by <code>app.py</code> background thread.</p>
+
+---
+
+<h2>8. Security & Privacy</h2>
+<ul>
+  <li>✅ <strong>No cloud</strong> – All data stored locally</li>
+  <li>✅ <strong>No login</strong> – No accounts, no passwords</li>
+  <li>✅ <strong>No tracking</strong> – No analytics, no telemetry</li>
+  <li>✅ <strong>Open source</strong> – Full code auditable</li>
+  <li>✅ <strong>Offline-first</strong> – Works without internet</li>
+</ul>
+
+---
+
+<h2>9. How to Run</h2>
+<ol>
+  <li>Create virtual environment:<br><code>python3 -m venv venv</code></li>
+  <li>Activate it:<br><code>source venv/bin/activate</code></li>
+  <li>Install dependencies:<br><code>pip install -r requirements.txt</code></li>
+  <li>Fix pyaudio (if needed):<br><code>sudo apt install portaudio19-dev python3-dev</code></li>
+  <li>Run the app:<br><code>python app.py</code></li>
+</ol>
+<p>Open: <a href="http://localhost:5000">http://localhost:5000</a></p>
+
+---
+
+<h2>10. Demo Script</h2>
+<blockquote>
+  "Watch what happens when I say 'help'. Aurora starts recording my surroundings — no touch needed. It logs the event, saves the audio, and keeps it private. Even offline. Even in the dark. This is safety that listens."
+</blockquote>
+
+---
+
+<div class="footer">
+  🌌 Aurora Safety App | Hackathon 2025 | Built with Flask + SQLite + Python<br>
+  <em>Because help should be as simple as speaking.</em>
+</div>
+
+</body>
+</html>
