@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from '../components/Button.jsx';
 import { useNavigate } from 'react-router-dom';
+import '../Styles/LandingPage.css'
 
 export default function LandingPage(){
     const navigate = useNavigate();

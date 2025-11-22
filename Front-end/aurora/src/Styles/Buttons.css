@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
 :root {
-    --button-bg-colour : #AA42AA;
+    --button-bg-colour : #570069;
     --text-colour : white;
     --button-font : "Poppins" , sans-serif;
     --font-weight : 600;
     --border-radius : 50px;
-    --button-padding : 10px 16px;
+    --button-padding : 14px 30px;
     --danger-button : red;
 }
 
