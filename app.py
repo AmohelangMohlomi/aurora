@@ -7,7 +7,7 @@ import speech_recognition as sr
 app = Flask(__name__)
 AUDIO_FOLDER = "audio"
 ACTIVATION_KEYWORD = "computer"
-SILENCE_THRESHOLD = 5  # seconds of silence to stop
+SILENCE_THRESHOLD = 5  
 
 recognizer = sr.Recognizer()
 mic = sr.Microphone()
@@ -75,7 +75,7 @@ def index():
 
 @app.route('/start')
 def start_recording():
-    # Run in background so Flask doesn't hang
+
     threading.Thread(target=listen_for_keyword_and_record).start()
     return redirect(url_for('index'))
 
