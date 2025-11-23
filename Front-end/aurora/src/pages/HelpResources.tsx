@@ -40,7 +40,7 @@ const HelpResources = () => {
     {
       icon: MapPin,
       title: "Local Police (Non-Emergency)",
-      phone: "10111",
+      phone: "311",
       description: "Non-emergency police services",
       category: "Local Support",
     },

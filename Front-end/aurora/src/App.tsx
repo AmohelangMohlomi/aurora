@@ -8,11 +8,6 @@ import Dashboard from "./pages/Dashboard";
 import HelpResources from "./pages/HelpResources";
 import HiddenApp from "./pages/HiddenApp";
 import NotFound from "./pages/NotFound";
-import Settings from "./pages/Settings";
-import SafetyMeterPage from "./pages/SafetyMeterPage";
-import LocationTrackerPage from "./pages/LocationTrackerPage";
-import FriendTrackerPage from "./pages/FriendTrackerPage";
-import AudioMonitorPage from "./pages/AudioMonitorPage";
 
 const queryClient = new QueryClient();
 
@@ -26,11 +21,6 @@ const App = () => (
           <Route path="/" element={<Landing />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/help-resources" element={<HelpResources />} />
-          <Route path="/settings" element={<Settings />} />
-          <Route path="/safety-meter" element={<SafetyMeterPage />} />
-          <Route path="/location-tracker" element={<LocationTrackerPage />} />
-          <Route path="/safety-circle" element={<FriendTrackerPage />} />
-          <Route path="/audio-monitor" element={<AudioMonitorPage />} />
           <Route path="/hidden" element={<HiddenApp />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
