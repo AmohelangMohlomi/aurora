@@ -22,6 +22,8 @@ export default function SignUpPage() {
                 <form className="signup-form" onSubmit={handleSignUp}>
                     <input type="email" placeholder="Email" className="signup-input" required/>
                     <input type="password" placeholder="Password" className="signup-input" required/>
+                    <input type="password" placeholder="Confirm Password" className="signup-input" required/>
+                    
 
                     <Button variant="primary" type="submit">
                         Sign Up

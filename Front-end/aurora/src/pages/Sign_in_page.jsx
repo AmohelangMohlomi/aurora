@@ -16,6 +16,7 @@ export default function SignInPage() {
     return (
         <div className="signin-page">
             <div className="signin-container">
+                {/* <AuthTabs/> */}
                 <h1 className="signin-title">Welcome Back</h1>
                 <p>Sign In To Continue To Aurora</p>
 
@@ -26,6 +27,10 @@ export default function SignInPage() {
                         Sign In 
                     </Button>
                 </form>
+
+                <p className="signup-footer">
+                    Don't have an account? <a href="/signup">Sign Up</a>
+                </p>
             </div>
         </div>
     )
