@@ -8,13 +8,17 @@ import { AlertTriangle, Phone, Settings } from "lucide-react";
 
 const Dashboard = () => {
   return (
-    <div className="min-h-screen gradient-bg">
-      <Header />
-      
-      <main className="pt-24 pb-12 px-4">
-        <div className="container mx-auto max-w-7xl">
+    <div className="flex flex-col min-h-screen gradient-bg">
+      {/* Sticky Header */}
+      <Header className="sticky top-0 z-50 glass-card" />
+
+      {/* Scrollable Main Content */}
+      <main className="flex-1 overflow-y-auto pt-24 pb-12 px-4">
+        <div className="container mx-auto max-w-7xl flex flex-col gap-6">
+
+          {/* Welcome Section */}
           <div className="mb-8">
-            <h1 className="font-heading font-bold text-4xl mb-2">
+            <h1 className="font-heading font-bold text-4xl mb-2 text-gradient">
               Welcome Back, <span className="text-gradient">User</span>
             </h1>
             <p className="text-muted-foreground">
@@ -26,7 +30,7 @@ const Dashboard = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
             <Button
               size="lg"
-              className="bg-red-500 hover:bg-red-600 text-white h-16 text-lg font-semibold"
+              className="bg-red-500 hover:bg-red-600 text-white h-16 text-lg font-semibold flex items-center justify-center"
             >
               <AlertTriangle className="w-6 h-6 mr-2" />
               SOS Mode
@@ -34,7 +38,7 @@ const Dashboard = () => {
             <Button
               size="lg"
               variant="outline"
-              className="h-16 text-lg font-semibold"
+              className="h-16 text-lg font-semibold flex items-center justify-center"
             >
               <Phone className="w-6 h-6 mr-2" />
               Get Help
@@ -42,7 +46,7 @@ const Dashboard = () => {
             <Button
               size="lg"
               variant="outline"
-              className="h-16 text-lg font-semibold"
+              className="h-16 text-lg font-semibold flex items-center justify-center"
             >
               <Settings className="w-6 h-6 mr-2" />
               Settings
@@ -59,8 +63,12 @@ const Dashboard = () => {
             <div className="lg:col-span-2">
               <FriendTracker />
             </div>
+
+            {/* Recent Activity */}
             <div className="lg:col-span-2 glass-card p-6 rounded-2xl">
-              <h3 className="font-heading font-semibold text-lg mb-4">Recent Activity</h3>
+              <h3 className="font-heading font-semibold text-lg mb-4">
+                Recent Activity
+              </h3>
               <div className="space-y-3">
                 <div className="p-3 rounded-lg bg-secondary/50">
                   <p className="text-sm font-medium">Location shared with Sarah M.</p>
@@ -76,6 +84,7 @@ const Dashboard = () => {
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       </main>
