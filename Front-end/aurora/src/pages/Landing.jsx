@@ -7,7 +7,7 @@ const Landing = () => {
   const navigate = useNavigate();
 
   const handleGetStarted = () => {
-    navigate("/dashboard");
+    navigate("/signup");
   };
 
   return (
@@ -18,7 +18,7 @@ const Landing = () => {
         <p>Safety reinvented</p>
 
         <Button size="lg" onClick={handleGetStarted}>
-          Get Started
+          Get Started 
         </Button>
       </header>
     </div>

@@ -13,6 +13,8 @@ import SafetyMeterPage from "./pages/SafetyMeterPage";
 import LocationTrackerPage from "./pages/LocationTrackerPage";
 import FriendTrackerPage from "./pages/FriendTrackerPage";
 import AudioMonitorPage from "./pages/AudioMonitorPage";
+import SignUpPage from './pages/SignUpPage';
+import SignInPage from './pages/SignInPage';
 
 const queryClient = new QueryClient();
 
@@ -24,6 +26,8 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Landing />} />
+          <Route path="/signup" element={<SignUpPage />} />
+          <Route path="/signin" element={<SignInPage />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/help-resources" element={<HelpResources />} />
           <Route path="/settings" element={<Settings />} />
